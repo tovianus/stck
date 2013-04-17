@@ -1,0 +1,94 @@
+<% provide(:title, "Dashboard") %>
+<div class="row-fluid">
+  <div class="page-header span12">
+    <h1><%= yield(:title) %> <small>for <%= current_user.email %></small></h2>
+  </div>
+  <div class="row-fluid">
+    <div class="span2">
+      <h3>Permohonan STCK hari ini</h3>
+      <ul>
+        <li>Pending</li>
+        <li>Dibatalkan</li>
+        <li>Disetujui</li>
+        <li>Diregistrasi</li>
+        <li>Dicetak</li>
+      </ul>
+      <h3>Permohonan STCK bulan ini</h3>
+      <ul>
+        <li>Pending</li>
+        <li>Dibatalkan</li>
+        <li>Disetujui</li>
+        <li>Diregistrasi</li>
+        <li>Dicetak</li>
+      </ul>
+    </div>
+    <div class="span10">
+      <h3>Pending</h3>
+      <table class="table table-condensed">
+        <thead>
+          <th>tanggal</th>
+          <th>no rangka</th>
+          <th>no mesin</th>
+        </thead>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+      </table>
+      <h3>Dibatalkan</h3>
+      <table class="table table-condensed">
+        <thead>
+          <th>tanggal</th>
+          <th>no rangka</th>
+          <th>no mesin</th>
+        </thead>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+      </table>
+      <h3>Disetujui</h3>
+      <table class="table table-condensed">
+        <thead>
+          <th>tanggal</th>
+          <th>no rangka</th>
+          <th>no mesin</th>
+        </thead>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+      </table>
+      <h3>Didaftarkan</h3>
+      <table class="table table-condensed">
+        <thead>
+          <th>tanggal</th>
+          <th>no rangka</th>
+          <th>no mesin</th>
+        </thead>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+      </table>
+      <h3>Dicetak</h3>
+      <table class="table table-condensed">
+        <thead>
+          <th>tanggal</th>
+          <th>no rangka</th>
+          <th>no mesin</th>
+        </thead>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+    </div>
+  </div>
+</div>
+
+

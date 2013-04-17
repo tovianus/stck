@@ -1,5 +1,4 @@
 class StaticPagesController < ApplicationController
-    before_filter :authenticate_user!
   def home
 
   end
@@ -9,5 +8,7 @@ class StaticPagesController < ApplicationController
   def about
   end
   def contact
+  end
+  def dashboard
   end
 end
