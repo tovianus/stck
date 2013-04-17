@@ -9,9 +9,9 @@
         <% if current_user.roles.to_s.include?"admin" %>
           <li><%= link_to "Perusahaan", perusahaans_path %></li>
           <li><%= link_to "User", user_index_path %></li>
-          <li><%= link_to "Permohonan STCK", stck_requests_index_path %></li>
         <% end %>
-      </ul>
+        <li><%= link_to "Permohonan STCK", stck_requests_path %></li>
+\      </ul>
       <% end %>
       <ul class="nav pull-right">
         <% if user_signed_in? %>

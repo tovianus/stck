@@ -5,21 +5,29 @@
   </div>
   <div class="row-fluid">
     <div class="span2">
-      <h3>Permohonan STCK hari ini</h3>
+      <h3>Aktifitas STCK hari ini</h3>
       <ul>
-        <li>Pending</li>
-        <li>Dibatalkan</li>
-        <li>Disetujui</li>
-        <li>Diregistrasi</li>
-        <li>Dicetak</li>
+        <li>Pending <%= @pending_today %></li>
+        <li>Dibatalkan <%= @cancelled_today %></li>
+        <li>Disetujui <%= @approved_today %></li>
+        <li>Diregistrasi <%= @registered_today %></li>
+        <li>Dicetak <%= @printed_today %></li>
       </ul>
-      <h3>Permohonan STCK bulan ini</h3>
+      <h3>Aktifitas STCK bulan ini</h3>
       <ul>
-        <li>Pending</li>
-        <li>Dibatalkan</li>
-        <li>Disetujui</li>
-        <li>Diregistrasi</li>
-        <li>Dicetak</li>
+        <li>Pending <%= @pending_mtd %></li>
+        <li>Dibatalkan <%= @cancelled_mtd %></li>
+        <li>Disetujui <%= @approved_mtd %></li>
+        <li>Diregistrasi <%= @registered_mtd %></li>
+        <li>Dicetak <%= @printed_mtd %></li>
+      </ul>
+      <h3>Aktifitas STCK tahun ini</h3>
+      <ul>
+        <li>Pending <%= @pending_ytd %></li>
+        <li>Dibatalkan <%= @cancelled_ytd %></li>
+        <li>Disetujui <%= @approved_ytd %></li>
+        <li>Diregistrasi <%= @registered_ytd %></li>
+        <li>Dicetak <%= @printed_ytd %></li>
       </ul>
     </div>
     <div class="span10">
@@ -30,11 +38,13 @@
           <th>no rangka</th>
           <th>no mesin</th>
         </thead>
-        <tr>
-          <td>1</td>
-          <td>2</td>
-          <td>3</td>
-        </tr>
+        <% @pending.each do |t| %>
+          <tr>
+            <td><%= t.tg_mohon %></td>
+            <td><%= t.no_rangka %></td>
+            <td><%= t.no_mesin %></td>
+          </tr>
+        <% end %>
       </table>
       <h3>Dibatalkan</h3>
       <table class="table table-condensed">
@@ -43,11 +53,13 @@
           <th>no rangka</th>
           <th>no mesin</th>
         </thead>
-        <tr>
-          <td>1</td>
-          <td>2</td>
-          <td>3</td>
-        </tr>
+        <% @cancelled.each do |t| %>
+          <tr>
+            <td><%= t.tg_batal %></td>
+            <td><%= t.no_rangka %></td>
+            <td><%= t.no_mesin %></td>
+          </tr>
+        <% end %>
       </table>
       <h3>Disetujui</h3>
       <table class="table table-condensed">
@@ -56,11 +68,13 @@
           <th>no rangka</th>
           <th>no mesin</th>
         </thead>
-        <tr>
-          <td>1</td>
-          <td>2</td>
-          <td>3</td>
-        </tr>
+        <% @approved.each do |t| %>
+          <tr>
+            <td><%= t.tg_persetujuan %></td>
+            <td><%= t.no_rangka %></td>
+            <td><%= t.no_mesin %></td>
+          </tr>
+        <% end %>
       </table>
       <h3>Didaftarkan</h3>
       <table class="table table-condensed">
@@ -69,11 +83,13 @@
           <th>no rangka</th>
           <th>no mesin</th>
         </thead>
-        <tr>
-          <td>1</td>
-          <td>2</td>
-          <td>3</td>
-        </tr>
+        <% @registered.each do |t| %>
+          <tr>
+            <td><%= t.tg_daftar %></td>
+            <td><%= t.no_rangka %></td>
+            <td><%= t.no_mesin %></td>
+          </tr>
+        <% end %>
       </table>
       <h3>Dicetak</h3>
       <table class="table table-condensed">
@@ -82,11 +98,13 @@
           <th>no rangka</th>
           <th>no mesin</th>
         </thead>
-        <tr>
-          <td>1</td>
-          <td>2</td>
-          <td>3</td>
-        </tr>
+        <% @printed.each do |t| %>
+          <tr>
+            <td><%= t.tg_cetak %></td>
+            <td><%= t.no_rangka %></td>
+            <td><%= t.no_mesin %></td>
+          </tr>
+        <% end %>
       </table>
     </div>
   </div>

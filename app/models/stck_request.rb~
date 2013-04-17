@@ -27,8 +27,10 @@ class StckRequest < ActiveRecord::Base
 
   def self.byuser(current_user)
     if current_user.roles.to_s.include?"admin"
+        p "admin"
         self.where("user_id not null")
     else
+        p "Not admin"
         self.where("user_id=?",current_user.id)
     end
   end

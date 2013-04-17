@@ -9,6 +9,9 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :roles
   # attr_accessible :title, :body
 
+  has_many :stck_requests
+  belongs_to :perusahaan
+
   ROLES = %w[admin approving registering printing dealer banned]
 
   def is?(role)

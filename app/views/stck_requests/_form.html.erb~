@@ -103,6 +103,10 @@
     <%= f.label :tg_pembatalan %><br />
     <%= f.datetime_select :tg_pembatalan %>
   </div>
+  <% for kabupaten in StckRequest::KABUPATEN %>
+    <%= check_box_tag "user[roles][#{role}]", role, @user.roles.include?(role), {:name => "user[roles][]"}%>
+    <%= label_tag "user_roles_#{role}", role.humanize %><br />
+  <% end %>
 
   <div class="field">
     <%= f.label :kabupaten %><br />
