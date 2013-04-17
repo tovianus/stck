@@ -4,10 +4,12 @@
     <div class="container">
     <nav>
       <% if user_signed_in? %>
-      <ul class="nav nav_tabs pull-center">
+      <ul class="nav nav-tabs pull-center">
         <li><%= link_to "Dashboard", dashboard_path %></li>
-        <li><%= link_to "Home", "#" %></li>
-        <li><%= link_to "Home", "#" %></li>
+        <% if current_user.roles.to_s.include?"admin" %>
+          <li><%= link_to "Perusahaan", perusahaan_path %></li>
+          <li><%= link_to "User", "#" %></li>
+        <% end %>
       </ul>
       <% end %>
       <ul class="nav pull-right">

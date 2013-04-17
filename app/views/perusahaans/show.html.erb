@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nama penanggung:</b>
+  <%= @perusahaan.nama_penanggung %>
+</p>
+
+<p>
+  <b>Nama badan:</b>
+  <%= @perusahaan.nama_badan %>
+</p>
+
+<p>
+  <b>Alamat badan:</b>
+  <%= @perusahaan.alamat_badan %>
+</p>
+
+<p>
+  <b>Telepon:</b>
+  <%= @perusahaan.telepon %>
+</p>
+
+<p>
+  <b>Nama kontak:</b>
+  <%= @perusahaan.nama_kontak %>
+</p>
+
+<p>
+  <b>Kdperusahaan:</b>
+  <%= @perusahaan.kdperusahaan %>
+</p>
+
+
+<%= link_to 'Edit', edit_perusahaan_path(@perusahaan) %> |
+<%= link_to 'Back', perusahaans_path %>
