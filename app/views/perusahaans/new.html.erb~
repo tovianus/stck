@@ -24,10 +24,10 @@
 </div>
 <div class="row">
   <div class="span2">
-  <div class="span8">
+  <div class="span8 offset4">
     <%= render 'form' %>
     <%= link_to 'Batalkan', perusahaans_path %>
   </div>
-  <div class="span2">
+  <div class="span4 offset4">
 </div>
 

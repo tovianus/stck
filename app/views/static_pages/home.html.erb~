@@ -1,13 +1,13 @@
-<div class="center hero-unit">
-  <h1>STCK Ditlantas Polda Bali</h1>
+<% provide(:title, 'STCK Ditlantas Polda Bali') %>
+<div class="row-fluid">
+  <div class="page-header span12">
+    <%= render "layouts/page_title" %>
   <h2>
     Aplikasi permohonan STCK Ditlantas Polda Bali
   </h2>
-  <% if user_signed_in? %>
-    <%= link_to "Logout", destroy_user_session_path, :method => :delete, :class => "btn btn-large btn-primary"   %>        
-  <% else %>
-    <%= link_to('Login', new_user_session_path, :class => "btn btn-large btn-primary" )  %>  
-  <% end %>
-
+  </div>
+  <div class="row-fluid span12">
+  <%= render 'devise/menu/login' %>
+  </div>
 </div>
 

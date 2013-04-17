@@ -7,8 +7,9 @@
       <ul class="nav nav-tabs pull-center">
         <li><%= link_to "Dashboard", dashboard_path %></li>
         <% if current_user.roles.to_s.include?"admin" %>
-          <li><%= link_to "Perusahaan", perusahaan_path %></li>
-          <li><%= link_to "User", "#" %></li>
+          <li><%= link_to "Perusahaan", perusahaans_path %></li>
+          <li><%= link_to "User", user_index_path %></li>
+          <li><%= link_to "Permohonan STCK", stck_requests_index_path %></li>
         <% end %>
       </ul>
       <% end %>

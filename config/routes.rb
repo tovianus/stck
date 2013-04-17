@@ -1,4 +1,9 @@
 Stck::Application.routes.draw do
+  get "user/index"
+
+  resources :stck_requests
+
+
   resources :perusahaans
 
 

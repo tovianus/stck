@@ -1,5 +1,6 @@
 class PerusahaansController < ApplicationController
   skip_authorization_check
+
   # GET /perusahaans
   # GET /perusahaans.json
   def index

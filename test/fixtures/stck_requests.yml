@@ -1,0 +1,55 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  idperusahaan: 1
+  user_id: 1
+  perusahaan_id: 1
+  kepentingan: MyString
+  merk: MyString
+  jenis: MyString
+  model: MyString
+  thn_buat: 1
+  thn_rakit: 1
+  jml_cc: 1
+  warna: MyString
+  bbm: MyString
+  tnkb: MyString
+  jml_roda: 1
+  no_rangka: MyString
+  no_mesin: MyString
+  tg_mohon: 2013-04-18 00:29:21
+  tg_persetujuan: 2013-04-18 00:29:21
+  no_daftar: MyString
+  tg_daftar: 2013-04-18 00:29:21
+  tg_akhir: 2013-04-18
+  tg_cetak: 2013-04-18 00:29:21
+  tg_pembatalan: 2013-04-18 00:29:21
+  kabupaten: MyString
+  idranmor: 1
+
+two:
+  idperusahaan: 1
+  user_id: 1
+  perusahaan_id: 1
+  kepentingan: MyString
+  merk: MyString
+  jenis: MyString
+  model: MyString
+  thn_buat: 1
+  thn_rakit: 1
+  jml_cc: 1
+  warna: MyString
+  bbm: MyString
+  tnkb: MyString
+  jml_roda: 1
+  no_rangka: MyString
+  no_mesin: MyString
+  tg_mohon: 2013-04-18 00:29:21
+  tg_persetujuan: 2013-04-18 00:29:21
+  no_daftar: MyString
+  tg_daftar: 2013-04-18 00:29:21
+  tg_akhir: 2013-04-18
+  tg_cetak: 2013-04-18 00:29:21
+  tg_pembatalan: 2013-04-18 00:29:21
+  kabupaten: MyString
+  idranmor: 1
