@@ -1,0 +1,71 @@
+<h1>Listing stck_requests</h1>
+
+<table>
+  <tr>
+    <th>Idperusahaan</th>
+    <th>User</th>
+    <th>Perusahaan</th>
+    <th>Kepentingan</th>
+    <th>Merk</th>
+    <th>Jenis</th>
+    <th>Model</th>
+    <th>Thn buat</th>
+    <th>Thn rakit</th>
+    <th>Jml cc</th>
+    <th>Warna</th>
+    <th>Bbm</th>
+    <th>Tnkb</th>
+    <th>Jml roda</th>
+    <th>No rangka</th>
+    <th>No mesin</th>
+    <th>Tg mohon</th>
+    <th>Tg persetujuan</th>
+    <th>No daftar</th>
+    <th>Tg daftar</th>
+    <th>Tg akhir</th>
+    <th>Tg cetak</th>
+    <th>Tg pembatalan</th>
+    <th>Kabupaten</th>
+    <th>Idranmor</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @stck_requests.each do |stck_request| %>
+  <tr>
+    <td><%= stck_request.idperusahaan %></td>
+    <td><%= stck_request.user_id %></td>
+    <td><%= stck_request.perusahaan_id %></td>
+    <td><%= stck_request.kepentingan %></td>
+    <td><%= stck_request.merk %></td>
+    <td><%= stck_request.jenis %></td>
+    <td><%= stck_request.model %></td>
+    <td><%= stck_request.thn_buat %></td>
+    <td><%= stck_request.thn_rakit %></td>
+    <td><%= stck_request.jml_cc %></td>
+    <td><%= stck_request.warna %></td>
+    <td><%= stck_request.bbm %></td>
+    <td><%= stck_request.tnkb %></td>
+    <td><%= stck_request.jml_roda %></td>
+    <td><%= stck_request.no_rangka %></td>
+    <td><%= stck_request.no_mesin %></td>
+    <td><%= stck_request.tg_mohon %></td>
+    <td><%= stck_request.tg_persetujuan %></td>
+    <td><%= stck_request.no_daftar %></td>
+    <td><%= stck_request.tg_daftar %></td>
+    <td><%= stck_request.tg_akhir %></td>
+    <td><%= stck_request.tg_cetak %></td>
+    <td><%= stck_request.tg_pembatalan %></td>
+    <td><%= stck_request.kabupaten %></td>
+    <td><%= stck_request.idranmor %></td>
+    <td><%= link_to 'Show', stck_request %></td>
+    <td><%= link_to 'Edit', edit_stck_request_path(stck_request) %></td>
+    <td><%= link_to 'Destroy', stck_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Stck request', new_stck_request_path %>

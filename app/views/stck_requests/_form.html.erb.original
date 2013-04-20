@@ -1,0 +1,83 @@
+<%= form_for(@stck_request) do |f| %>
+  <% if @stck_request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@stck_request.errors.count, "error") %> prohibited this stck_request from being saved:</h2>
+
+      <ul>
+      <% @stck_request.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :perusahaan_id %> 
+  </div>
+  <div class="field">
+    <%= f.label :kepentingan %><br />
+    <%= f.text_field :kepentingan %>
+  </div>
+  <div class="field">
+    <%= f.label :merk %><br />
+    <%= f.text_field :merk %>
+  </div>
+  <div class="field">
+    <%= f.label :jenis %><br />
+    <%= f.text_field :jenis %>
+  </div>
+  <div class="field">
+    <%= f.label :model %><br />
+    <%= f.text_field :model %>
+  </div>
+  <div class="controls control-row">
+    <%= f.label "Tahun buat/rakit" %> 
+    <input class="span3" type="text" placeholder=".tahunbuatrakit">/
+    <input class="span3" type="text" placeholder=".tahunbuatrakit">
+
+  </div>
+  <div class="field">
+    <%= f.label :thn_rakit %><br />
+    <%= f.number_field :thn_rakit %>
+  </div>
+  <div class="field">
+    <%= f.label :jml_cc %><br />
+    <%= f.number_field :jml_cc %>
+  </div>
+  <div class="field">
+    <%= f.label :warna %><br />
+    <%= f.text_field :warna %>
+  </div>
+  <div class="field">
+      <%= f.label :bbm %>
+      <%= select("stck_request[]", "bbm", StckRequest::BBM, {}, { :index => nil }) %>
+  </div>
+  <div class="field">
+    <%= f.label :tnkb %><br />
+    <%= f.text_field :tnkb %>
+  </div>
+  <div class="field">
+    <%= f.label :jml_roda %><br />
+    <%= f.number_field :jml_roda %>
+  </div>
+  <div class="field">
+    <%= f.label :no_rangka %><br />
+    <%= f.text_field :no_rangka %>
+  </div>
+  <div class="field">
+    <%= f.label :no_mesin %><br />
+    <%= f.text_field :no_mesin %>
+  </div>
+  <div class="field">
+      <%= f.label :kabupaten %>
+      <%= select("stck_request[]", "kabupaten", StckRequest::KABUPATEN, {}, { :index => nil }) %>
+  </div>
+  <div class="hidden">
+    <%= f.label :tg_mohon %><br />
+    <%= f.datetime_select :tg_mohon %>
+    <%= f.label :user_id %><br />
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

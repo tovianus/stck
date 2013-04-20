@@ -1,13 +1,8 @@
-<% provide(:title, 'STCK Ditlantas Polda Bali') %>
-<div class="row-fluid">
-  <div class="page-header span12">
-    <%= render "layouts/page_title" %>
+<div class="center">
+  <h1>STCK Ditlantas Polda Bali</h1>
   <h2>
     Aplikasi permohonan STCK Ditlantas Polda Bali
   </h2>
-  </div>
-  <div class="row-fluid span12">
   <%= render 'devise/menu/login' %>
-  </div>
 </div>
 

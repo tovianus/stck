@@ -4,7 +4,7 @@ class PerusahaansController < ApplicationController
   # GET /perusahaans
   # GET /perusahaans.json
   def index
-    @perusahaans = Perusahaan.all
+    @perusahaans = Perusahaan.paginate(:per_page => 20, :page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

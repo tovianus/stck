@@ -1,0 +1,6 @@
+<% provide(:title, @perusahaan.nama_badan) %>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', @perusahaan %> |
+<%= link_to 'Back', perusahaans_path %>

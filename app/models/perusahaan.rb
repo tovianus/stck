@@ -8,4 +8,8 @@ class Perusahaan < ActiveRecord::Base
   validates :alamat_badan, :presence => true
   validates :kdperusahaan, :presence => true
 
+  def ttl_request
+    self.stck_requests.count
+  end
+
 end

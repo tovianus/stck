@@ -2,8 +2,8 @@ Stck::Application.routes.draw do
   get "user/index"
 
   resources :stck_requests
-
-
+  post "stck_requests/search"
+  #map.search "search", :controller => "stck_request"
   resources :perusahaans
 
 

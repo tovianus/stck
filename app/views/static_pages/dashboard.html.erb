@@ -5,33 +5,33 @@
   </div>
   <div class="row-fluid">
     <div class="span2">
-      <h3>Aktifitas STCK hari ini</h3>
+      <h3>Hari ini</h3>
       <ul>
-        <li>Pending <%= @pending_today %></li>
-        <li>Dibatalkan <%= @cancelled_today %></li>
-        <li>Disetujui <%= @approved_today %></li>
-        <li>Diregistrasi <%= @registered_today %></li>
-        <li>Dicetak <%= @printed_today %></li>
+        <li><span class="label label-warning">Pending</span> <%= @pending_today %></li>
+        <li><span class="label label-important">Dibatalkan</span> <%= @cancelled_today %></li>
+        <li><span class="label label-info">Disetujui</span> <%= @approved_today %></li>
+        <li><span class="label label-success">Didaftarkan</span> <%= @registered_today %></li>
+        <li><span class="label label-success">Dicetak</span> <%= @printed_today %></li>
       </ul>
-      <h3>Aktifitas STCK bulan ini</h3>
+      <h3>Bulan ini</h3>
       <ul>
-        <li>Pending <%= @pending_mtd %></li>
-        <li>Dibatalkan <%= @cancelled_mtd %></li>
-        <li>Disetujui <%= @approved_mtd %></li>
-        <li>Diregistrasi <%= @registered_mtd %></li>
-        <li>Dicetak <%= @printed_mtd %></li>
+        <li><span class="label label-warning">Pending</span> <%= @pending_mtd %></li>
+        <li><span class="label label-important">Dibatalkan</span> <%= @cancelled_mtd %></li>
+        <li><span class="label label-info">Disetujui</span> <%= @approved_mtd %></li>
+        <li><span class="label label-success">Didaftarkan</span> <%= @registered_mtd %></li>
+        <li><span class="label label-success">Dicetak</span> <%= @printed_mtd %></li>
       </ul>
-      <h3>Aktifitas STCK tahun ini</h3>
+      <h3>Tahun ini</h3>
       <ul>
-        <li>Pending <%= @pending_ytd %></li>
-        <li>Dibatalkan <%= @cancelled_ytd %></li>
-        <li>Disetujui <%= @approved_ytd %></li>
-        <li>Diregistrasi <%= @registered_ytd %></li>
-        <li>Dicetak <%= @printed_ytd %></li>
+        <li><span class="label label-warning">Pending</span> <%= @pending_ytd %></li>
+        <li><span class="label label-important">Dibatalkan</span> <%= @cancelled_ytd %></li>
+        <li><span class="label label-info">Disetujui</span> <%= @approved_ytd %></li>
+        <li><span class="label label-success">Didaftarkan</span> <%= @registered_ytd %></li>
+        <li><span class="label label-success">Dicetak</span> <%= @printed_ytd %></li>
       </ul>
     </div>
     <div class="span10">
-      <h3>Pending</h3>
+      <span class="label label-warning"><h3>Pending</h3></span>
       <table class="table table-condensed">
         <thead>
           <th>tanggal</th>
@@ -46,7 +46,7 @@
           </tr>
         <% end %>
       </table>
-      <h3>Dibatalkan</h3>
+      <span class="label label-important"><h3>Dibatalkan</h3></span>
       <table class="table table-condensed">
         <thead>
           <th>tanggal</th>
@@ -55,13 +55,13 @@
         </thead>
         <% @cancelled.each do |t| %>
           <tr>
-            <td><%= t.tg_batal %></td>
+            <td><%= t.tg_pembatalan %></td>
             <td><%= t.no_rangka %></td>
             <td><%= t.no_mesin %></td>
           </tr>
         <% end %>
       </table>
-      <h3>Disetujui</h3>
+      <span class="label label-info"><h3>Disetujui</h3></span>
       <table class="table table-condensed">
         <thead>
           <th>tanggal</th>
@@ -76,7 +76,7 @@
           </tr>
         <% end %>
       </table>
-      <h3>Didaftarkan</h3>
+      <span class="label label-success"><h3>Didaftarkan</h3></span>
       <table class="table table-condensed">
         <thead>
           <th>tanggal</th>
@@ -91,7 +91,7 @@
           </tr>
         <% end %>
       </table>
-      <h3>Dicetak</h3>
+      <span class="label label-success"><h3>Dicetak</h3></span>
       <table class="table table-condensed">
         <thead>
           <th>tanggal</th>

@@ -7,15 +7,16 @@
   <%= csrf_meta_tags %>
   <%= render 'layouts/shim' %>
 </head>
-<body>
-  <%= render 'layouts/header' %>
-  <div class="container-fluid">
-    <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: "alert alert-#{key}") %>
-    <% end %>
-    <%= yield %>
-    <%= render 'layouts/footer' %>
-    <%= debug(params) if Rails.env.development? %>
-  </div>
+<body class="container">
+    <%= render 'layouts/header' %>
+      <div class="container-fluid">
+        <% flash.each do |key, value| %>
+          <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+        <% end %>
+        <%= yield %>
+        <%= render 'layouts/footer' %>
+        <%= debug(params) if Rails.env.development? %>
+      </div>
+    </div>
 </body>
 </html>

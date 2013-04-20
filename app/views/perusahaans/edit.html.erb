@@ -1,6 +1,6 @@
-<h1>Editing perusahaan</h1>
+<% provide(:title, @perusahaan.nama_badan) %>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @perusahaan %> |
-<%= link_to 'Back', perusahaans_path %>
+<%= link_to 'Tampilkan', @perusahaan %> |
+<%= link_to 'Kembali', perusahaans_path %>

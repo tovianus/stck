@@ -1,71 +1,99 @@
-<h1>Listing stck_requests</h1>
-
-<table>
-  <tr>
-    <th>Idperusahaan</th>
-    <th>User</th>
-    <th>Perusahaan</th>
-    <th>Kepentingan</th>
-    <th>Merk</th>
-    <th>Jenis</th>
-    <th>Model</th>
-    <th>Thn buat</th>
-    <th>Thn rakit</th>
-    <th>Jml cc</th>
-    <th>Warna</th>
-    <th>Bbm</th>
-    <th>Tnkb</th>
-    <th>Jml roda</th>
-    <th>No rangka</th>
-    <th>No mesin</th>
-    <th>Tg mohon</th>
-    <th>Tg persetujuan</th>
-    <th>No daftar</th>
-    <th>Tg daftar</th>
-    <th>Tg akhir</th>
-    <th>Tg cetak</th>
-    <th>Tg pembatalan</th>
-    <th>Kabupaten</th>
-    <th>Idranmor</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @stck_requests.each do |stck_request| %>
-  <tr>
-    <td><%= stck_request.idperusahaan %></td>
-    <td><%= stck_request.user_id %></td>
-    <td><%= stck_request.perusahaan_id %></td>
-    <td><%= stck_request.kepentingan %></td>
-    <td><%= stck_request.merk %></td>
-    <td><%= stck_request.jenis %></td>
-    <td><%= stck_request.model %></td>
-    <td><%= stck_request.thn_buat %></td>
-    <td><%= stck_request.thn_rakit %></td>
-    <td><%= stck_request.jml_cc %></td>
-    <td><%= stck_request.warna %></td>
-    <td><%= stck_request.bbm %></td>
-    <td><%= stck_request.tnkb %></td>
-    <td><%= stck_request.jml_roda %></td>
-    <td><%= stck_request.no_rangka %></td>
-    <td><%= stck_request.no_mesin %></td>
-    <td><%= stck_request.tg_mohon %></td>
-    <td><%= stck_request.tg_persetujuan %></td>
-    <td><%= stck_request.no_daftar %></td>
-    <td><%= stck_request.tg_daftar %></td>
-    <td><%= stck_request.tg_akhir %></td>
-    <td><%= stck_request.tg_cetak %></td>
-    <td><%= stck_request.tg_pembatalan %></td>
-    <td><%= stck_request.kabupaten %></td>
-    <td><%= stck_request.idranmor %></td>
-    <td><%= link_to 'Show', stck_request %></td>
-    <td><%= link_to 'Edit', edit_stck_request_path(stck_request) %></td>
-    <td><%= link_to 'Destroy', stck_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Stck request', new_stck_request_path %>
+<!--- 
+TODO
+1. Adding filters
+--->
+<% provide(:title, "Daftar permohonan STCK") %>
+<div class="row-fluid"  >
+  <div id="pgtitle" class="page-header span12"  >
+    <h1><%= yield(:title) %> 
+      <% unless current_user.roles.to_s.include?"admin"%>
+        <small>dari <%= current_user.email %></small>
+      <%end%>
+    </h1>
+  <div id="pgnav" class="row-fluid pull-left span12 style="border:2px solid">
+    <div class="span8">
+      <%= link_to 'Tambah permohonan', new_stck_request_path,:class => "btn btn-large btn-primary"  unless current_user.roles.to_s.include?"admin"%>
+    </div>
+    <div id="pgsearch" class="span4 pull-right">
+      <%= render :partial => 'stck_requests/filters' %>
+    </div>
+  </div>
+  <div class="row-fluid span12">
+  <%= will_paginate @products %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Status saat ini/tgl perubahan</th>
+          <th>No rangka</th>
+          <th>No mesin</th>
+          <th>Merk</th>
+          <th>Jenis</th>
+          <th>Model</th>
+          <th>Thn buat</th>
+          <th>Thn rakit</th>
+          <th>Sejarah status</th>
+          <th>Kabupaten</th>
+          <th colspan="3">&nbsp</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @stck_requests.each do |stck_request| %>
+          <% case stck_request.stck_status %>
+          <% when "Dimohon" %>
+            <tr class="error">
+          <% when "Dibatalkan" %>
+            <tr class="error">
+          <% when "Disetujui" %>
+            <tr class="info">
+          <% when "Didaftarkan" %>
+            <tr class="success">
+          <% when "Dicetak" %>
+            <tr class="success">
+          <% end %>
+              <% case stck_request.stck_status %>
+              <% when "Dimohon" %>
+                <td><span class="label label-warning"><%= stck_request.stck_status %> <%= stck_request.tg_mohon %></span> </td>
+              <% when "Dibatalkan" %>
+                <td><span class="label label-important"><%= stck_request.stck_status %> <%= stck_request.tg_pembatalan %> </span> </td>
+              <% when "Disetujui" %>
+                <td><span class="label label-info"><%= stck_request.stck_status %> <%= stck_request.tg_persetujuan %> </span> </td>
+              <% when "Didaftarkan" %>
+                <td><span class="label label-success"><%= stck_request.stck_status %> <%= stck_request.tg_daftar %> </span> </td>
+              <% when "Dicetak" %>
+                <td><span class="label label-success"><%= stck_request.stck_status %> <%= stck_request.tg_cetak %> </span> </td>
+              <% end %>
+            
+            <td><%= stck_request.no_rangka %> </td>
+            <td><%= stck_request.no_mesin %> </td>
+            <td><%= stck_request.merk %> </td>
+            <td><%= stck_request.jenis %> </td>
+            <td><%= stck_request.model %> </td>
+            <td><%= stck_request.thn_buat %> </td>
+            <td><%= stck_request.thn_rakit %> </td>
+            <td>
+              Dimohon   :<%= stck_request.tg_mohon %>
+              <% if stck_request.stck_status=="Disetujui" %><br>Disetujui :<%= stck_request.tg_persetujuan %><% end %>
+              <% if stck_request.stck_status=="Didaftarkan" %><br>Didaftar  :<%= stck_request.tg_daftar %><% end %>
+              <% if stck_request.stck_status=="Dicetak" %><br>Dicetak   :<%= stck_request.tg_cetak %><% end %>
+              <% if stck_request.stck_status=="Dibatalkan" %><br>Pembatalan:<%= stck_request.tg_pembatalan %> <%end%>
+            </td>
+            <td><%= stck_request.kabupaten %> </td>
+<!--- Menu --->
+              <td><%= link_to 'Show', stck_request,:class => "btn btn-small" %>
+                <% unless current_user.roles.to_s.include?"admin"%>
+                <% if stck_request.stck_status.upcase == "DIMOHON" %>
+                  <br><%= link_to 'Edit', edit_stck_request_path(stck_request),:class => "btn btn-small" %>
+                  <br><%= link_to 'Batalkan', stck_request, method: :delete, data: { confirm: 'Batalkan?' },:class => "btn btn-small" %> 
+                <% end %>
+                <% if stck_request.stck_status.upcase == "DIBATALKAN" %>
+                  <br><%= link_to 'Aktifkan', stck_request, method: :delete, data: { confirm: 'Aktifkan ?' },:class => "btn btn-small" %> 
+                <% end %>
+              </td>
+            <% end %>
+          </tr>
+      <% end %>
+      <tbody>
+    </table>
+<%= will_paginate @products %>
+  </div>
+</div>

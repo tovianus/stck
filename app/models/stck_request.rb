@@ -17,7 +17,7 @@ class StckRequest < ActiveRecord::Base
   scope :approved,  where("tg_persetujuan is not null")
   scope :registered, where("tg_daftar is not null")
   scope :printed, where("tg_cetak is not null")
-  scope :cancelled, where("tg_batal is not null")
+  scope :cancelled, where("tg_pembatalan is not null")
 # By datetime
   scope :fortoday, where(:updated_at => Date.today.beginning_of_day..Date.today.end_of_day)
   scope :forthismonth, where(:updated_at => Date.today.beginning_of_month.beginning_of_day..Date.today.end_of_day)
@@ -49,5 +49,38 @@ class StckRequest < ActiveRecord::Base
   validates :tg_mohon, :presence => true
   validates :kabupaten, :presence => true
   
+  def stck_status
+    status="Dimohon"      if self.tg_persetujuan.nil?
+    status="Dibatalkan"   if self.tg_pembatalan!=nil
+    status="Disetujui"    if self.tg_persetujuan!=nil
+    status="Didaftarkan"  if self.tg_daftar!=nil
+    status="Dicetak"      if self.tg_cetak!=nil
+    return status
+  end
 
+  def self.search(search)
+    if search
+      if search.upcase.include?"MOHON"
+        where('tg_persetujuan is null AND tg_pembatalan is NULL')
+      elsif search.upcase.include?"BATAL"
+        where('tg_pembatalan is not null')
+      elsif search.upcase.include?"SETUJU"
+        where('tg_persetujuan is not null')
+      elsif search.upcase.include?"DAFTAR"
+        where('tg_daftar is not null')
+      elsif search.upcase.include?"CETAK"
+        where('tg_cetak is not null')
+      elsif search.upcase.include?"@"
+        #Search by pemohon, Only for admin
+        if current_user.to_s.roles.include?"ADMIN"
+          user=User.where('email LIKE ?',"%#{search}%").first
+          where('user_id=?',user.id)
+        end
+      else
+        where('no_rangka LIKE ? OR no_mesin LIKE ? or merk LIKE ? OR jenis LIKE ? OR model LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
+      end
+    else
+      scoped
+    end
+  end
 end
