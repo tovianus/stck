@@ -1,0 +1,13 @@
+Feature: authorization with cancan
+  Background:
+    defined roles 
+      admin 
+      approving 
+      registering 
+      printing 
+      dealer 
+      banned
+
+  Scenario: define ability for admin
+    
+

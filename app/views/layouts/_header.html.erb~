@@ -16,7 +16,7 @@
         <% if user_signed_in? %>
         <ul class="nav nav-tabs">
           <li><%= link_to "Dashboard", dashboard_path %></li>
-          <% if current_user.roles.to_s.include?"admin" %>
+          <% if current_user.is?"admin" %>
             <li><%= link_to "Perusahaan", perusahaans_path %></li>
             <li><%= link_to "User", user_index_path %></li>
           <% end %>
@@ -27,7 +27,7 @@
     </div>
     <div class="span6 pull=right">
       <nav>
-        <ul class="nav nav-pills  pull-right">
+        <ul class="nav nav-tabs  pull-right">
           <% if user_signed_in? %>
           <li><%= link_to current_user.email,"#" %></li>
           <li><%= link_to "Ganti Password", edit_user_registration_path %></li>

@@ -3,20 +3,29 @@ class Ability
 
   def initialize(user)
     @user = user || User.new # for guest
+    #admin approving registering printing dealer banned
     @user.roles.each { |role| send(role) }
 
-#admin approving registering printing dealer banned
-    if user.role? :admin
-      can :manage, all
-      can :assign_roles, User 
+    if user.is? :admin
+      can :manage, Perusahaan
+      can :manage, User 
+      can :read, :all
     end
-    if user.role? :approving
-      can :update, StckRequest
+    if user.is? :approving
+      cannot :update, StckRequest, :tg_batal != nil
+      can :read, :update, StckRequest, :tg_persetujuan => nil
     end
-    if user.role? :dealer
-      can :read, StckRequest
-      can :create, StckRequest
-      can :destroy, StckRequest
+    if user.is? :registering
+      cannot :update, StckRequest, :tg_batal != nil
+      can :read, :update, StckRequest, :tg_persetujuan!=nil
+    end
+    if user.is? :printing
+      cannot :update, StckRequest, :tg_batal != nil
+      can :read, :update, StckRequest, :tg_daftar!=nil
+    end
+    if user.is? :dealer
+      can :manage, StckRequest, :user_id=user.id, :tg_persetujuan => nil
+      can :update, User, :user_id=user.id
     end
     # Define abilities for the passed in user here. For example:
     #
