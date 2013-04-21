@@ -6,13 +6,13 @@ TODO
 <div class="row-fluid"  >
   <div id="pgtitle" class="page-header span12"  >
     <h1><%= yield(:title) %> 
-      <% unless current_user.roles.to_s.include?"admin"%>
+      <% unless current_user.is?"admin"%>
         <small>dari <%= current_user.email %></small>
       <%end%>
     </h1>
   <div id="pgnav" class="row-fluid pull-left span12 style="border:2px solid">
     <div class="span8">
-      <%= link_to 'Tambah permohonan', new_stck_request_path,:class => "btn btn-large btn-primary"  unless current_user.roles.to_s.include?"admin"%>
+      <%= link_to 'Tambah permohonan', new_stck_request_path,:class => "btn btn-large btn-primary"  unless current_user.is?"admin"%>
     </div>
     <div id="pgsearch" class="span4 pull-right">
       <%= render :partial => 'stck_requests/filters' %>
@@ -79,10 +79,10 @@ TODO
             </td>
             <td><%= stck_request.kabupaten %> </td>
 <!--- Menu --->
-              <td><%= link_to 'Show', stck_request,:class => "btn btn-small" %>
-                <% unless current_user.roles.to_s.include?"admin"%>
+              <td><%= link_to 'Tampilkan', stck_request,:class => "btn btn-small" %>
+                <% unless current_user.is?"admin"%>
                 <% if stck_request.stck_status.upcase == "DIMOHON" %>
-                  <br><%= link_to 'Edit', edit_stck_request_path(stck_request),:class => "btn btn-small" %>
+                  <br><%= link_to 'Rubah', edit_stck_request_path(stck_request),:class => "btn btn-small" %>
                   <br><%= link_to 'Batalkan', stck_request, method: :delete, data: { confirm: "Batalkan no rangka #{stck_request.no_rangka}?" },:class => "btn btn-small" %> 
                 <% end %>
                 <% if stck_request.stck_status.upcase == "DIBATALKAN" %>

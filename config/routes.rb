@@ -3,15 +3,19 @@ Stck::Application.routes.draw do
 
   resources :stck_requests
   post "stck_requests/search"
-  #map.search "search", :controller => "stck_request"
   resources :perusahaans
 
 
+#  devise_for :users, :skip => [:registrations, :sessions]
   devise_for :users
   devise_scope :user do
     get "/login" => "devise/sessions#new"
     delete "/logout" => "devise/sessions#destroy"
   end
+  scope "/admin" do
+    resources :users
+  end
+  post "admin/users/search"
 
   root to: 'static_pages#home'
   match '/help',    to: 'static_pages#help'

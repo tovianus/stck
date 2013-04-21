@@ -5,5 +5,12 @@ TODO
 authorization
 - write cancan ability
 - integrate with user,perusahaan
+- integrate to all menu
 
+user management
+- index user
+- user can change password, can not change email
+- admin can change user detail 
+
+Dashboard
 

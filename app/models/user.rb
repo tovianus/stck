@@ -31,6 +31,15 @@ class User < ActiveRecord::Base
     end
   end
 
-
+  def self.byperusahaan(search)
+     includes(:perusahaan).where("perusahaans.nama_badan LIKE ? OR perusahaans.kdperusahaan LIKE ?","%#{search}%","%#{search}%")
+  end
+  def self.search(search)
+    if search
+      includes(:perusahaan).where("perusahaans.nama_badan LIKE ? OR perusahaans.kdperusahaan LIKE ? OR email LIKE ?", "%#{search}%","%#{search}%","%#{search}%")
+    else
+      scoped
+    end
+  end
 
 end
