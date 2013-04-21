@@ -1,33 +1,6 @@
-<% provide(:title, 'Menambah perusahaan') %>
-<div class="row">
-  <div class="page-header span12">
-    <h1><%= yield(:title) %> </h2>
-  </div>
-</div>
-<div class="row">
-  <div class="span4 offset4"></div>
-  <div class="span4 offset4">
-    <% if @perusahaan.errors.any? %>
-      <div id="error_explanation">
-        <div class="alert alert-error">
-          The form contains <%= pluralize(@perusahaan.errors.count, "error") %>.
-        </div>
-        <ul>
-        <% @perusahaan.errors.full_messages.each do |msg| %>
-          <li>* <%= msg %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
-  </div>
-  <div class="span4 offset4">
-</div>
-<div class="row">
-  <div class="span2">
-  <div class="span8">
-    <%= render 'form' %>
-    <%= link_to 'Batalkan', perusahaans_path %>
-  </div>
-  <div class="span2">
-</div>
+<% provide(:title, "Menambah data perusahaan") %>
+<%= render 'shared/error_messages' %>
+<%= render 'form' %>
 
+<%= link_to 'Tampilkan', @perusahaan,:class=>"btn" %> |
+<%= link_to 'Kembali', perusahaans_path,:class=>"btn" %>

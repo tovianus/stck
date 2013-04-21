@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @perusahaan %> |
-<%= link_to 'Back', perusahaans_path %>
+<%= link_to 'Tampilkan', @perusahaan,:class=>"btn" %> |
+<%= link_to 'Kembali', perusahaans_path,:class=>"btn" %>
