@@ -14,6 +14,9 @@ class User < ActiveRecord::Base
 
   ROLES = %w[admin approving registering printing dealer banned]
 
+  validates :perusahaan_id, :presence => true
+  validates :roles_mask, :presence => true
+
   def is?(role)
     roles.include?(role.to_s)
   end
