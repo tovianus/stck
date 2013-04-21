@@ -1,5 +1,6 @@
 <% provide(:title, "Menambah data perusahaan") %>
-<%= render 'share/error_messages' %>
+<%= render "shared/page_title" %>
+<%= render "shared/error_messages", :target => @perusahaan %>
 <%= render 'form' %>
 
 <%= link_to 'Tampilkan', @perusahaan,:class=>"btn" %> |

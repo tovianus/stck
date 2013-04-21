@@ -19,9 +19,7 @@ TODO
     </div>
   </div>
   <div class="row-fluid span12">
-<div class="pagination">
   <%= will_paginate @products %>
-</div>
     <table class="table">
       <thead>
         <tr>
@@ -42,7 +40,7 @@ TODO
         <% @stck_requests.each do |stck_request| %>
           <% case stck_request.stck_status %>
           <% when "Dimohon" %>
-            <tr class="error">
+            <tr class="pending">
           <% when "Dibatalkan" %>
             <tr class="error">
           <% when "Disetujui" %>
@@ -54,17 +52,17 @@ TODO
           <% end %>
               <% case stck_request.stck_status %>
               <% when "Dimohon" %>
-                <td><span class="label label-warning"><%= stck_request.stck_status %> <%= stck_request.tg_mohon %></span> </td>
+                <% lblstatus="label label-warning"; status="Dimohon: #{stck_request.tg_mohon}" %>
               <% when "Dibatalkan" %>
-                <td><span class="label label-important"><%= stck_request.stck_status %> <%= stck_request.tg_pembatalan %> </span> </td>
+                <% lblstatus="label label-important"; status="Dibatalkan: #{stck_request.tg_pembatalan}" %>
               <% when "Disetujui" %>
-                <td><span class="label label-info"><%= stck_request.stck_status %> <%= stck_request.tg_persetujuan %> </span> </td>
+                <% lblstatus="label label-info"; status="Disetujui: #{stck_request.tg_persetujuan}" %>
               <% when "Didaftarkan" %>
-                <td><span class="label label-success"><%= stck_request.stck_status %> <%= stck_request.tg_daftar %> </span> </td>
+                <% lblstatus="label label-success"; status="Didaftarkan: #{stck_request.tg_daftar}" %>
               <% when "Dicetak" %>
-                <td><span class="label label-success"><%= stck_request.stck_status %> <%= stck_request.tg_cetak %> </span> </td>
+                <% lblstatus="label label-success"; status="Dicetak: {stck_request.tg_cetak}" %>
               <% end %>
-            
+            <td><span class="<%= lblstatus %>"><%= status %> </span> </td>
             <td><%= stck_request.no_rangka %> </td>
             <td><%= stck_request.no_mesin %> </td>
             <td><%= stck_request.merk %> </td>

@@ -4,7 +4,7 @@ class PerusahaansController < ApplicationController
   # GET /perusahaans
   # GET /perusahaans.json
   def index
-    @perusahaans = Perusahaan.all
+    @perusahaans = Perusahaan.paginate(:per_page => 20, :page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -62,7 +62,7 @@ class PerusahaansController < ApplicationController
 
     respond_to do |format|
       if @perusahaan.update_attributes(params[:perusahaan])
-        format.html { redirect_to @perusahaan, notice: 'Perusahaan was successfully updated.' }
+        format.html { redirect_to perusahaan_url, notice: 'Perusahaan was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

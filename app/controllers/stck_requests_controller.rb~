@@ -1,5 +1,5 @@
 #TODO
-# - user id should match current_user when show or edit
+# - search by user for administrator
 
 class StckRequestsController < ApplicationController
 skip_authorization_check

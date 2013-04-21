@@ -74,7 +74,7 @@ class StckRequest < ActiveRecord::Base
         #Search by pemohon, Only for admin
         if current_user.to_s.roles.include?"ADMIN"
           user=User.where('email LIKE ?',"%#{search}%").first
-          where('tg_cetak is not null')
+          where('user_id=?',user.id)
         end
       else
         where('no_rangka LIKE ? OR no_mesin LIKE ? or merk LIKE ? OR jenis LIKE ? OR model LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")

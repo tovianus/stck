@@ -1,12 +1,8 @@
 <% provide(:title, 'Daftar perusahaan') %>
 <div class="row-fluid">
-  <div id="pgtitle" class="span12 page-header"  >
-    <h1>
-      <%= yield(:title) %> 
-    </h1>
-    <div id="pgnav" class="row-fluid span12 pull-left style="border:2px solid">
-        <%= link_to('New Perusahaan', new_perusahaan_path, :class => "btn btn-large btn-primary" )  %>  
-    </div>
+  <%= render "shared/page_title" %>
+  <div id="pgnav" class="row-fluid span12 pull-left style="border:2px solid">
+      <%= link_to('Tambah Perusahaan', new_perusahaan_path, :class => "btn btn-large" )  %>  
   </div>
   <div  class="row-fluid">
     <div class="span12">
@@ -42,9 +38,9 @@
             </td>
             <td>
               <%= link_to 'Tampilkan', perusahaan,:class=>"btn btn-small" %>
-              <%= link_to 'Edit', edit_perusahaan_path(perusahaan),:class=>"btn btn-small" %>
+              <%= link_to 'Rubah', edit_perusahaan_path(perusahaan),:class=>"btn btn-small" %>
               <% if perusahaan.ttl_request==0 %>
-                <%= link_to 'Batalkan', perusahaan, method: :delete, data: { confirm: 'Batalkan?' },:class=>"btn btn-small" %></td>
+                <%= link_to 'Hapus', perusahaan, method: :delete, data: { confirm: "Hapus data #{perusahaan.nama_badan}?" },:class=>"btn btn-small" %></td>
               <%end%>
           </tr>
         <% end %>

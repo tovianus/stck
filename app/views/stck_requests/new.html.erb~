@@ -2,3 +2,4 @@
 <%= render "shared/error_messages", :target => @stck_request %>
 <%= render 'form' %>
 
+<%= link_to 'Back', stck_requests_path %>

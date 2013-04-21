@@ -32,6 +32,7 @@ skip_authorization_check
     #Default fields
     @stck_request.perusahaan_id=current_user.perusahaan_id
     @stck_request.user_id=current_user.id
+    @stck_request.tg_mohon=DateTime.now
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @stck_request }

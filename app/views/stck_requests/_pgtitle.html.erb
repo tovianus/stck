@@ -1,0 +1,21 @@
+<div class="span12">
+    <% if @stck_request.new_record? %>
+      <span class="label label-info"><h3>Permohonan baru</h3></span>
+    <% else %>
+      <% case @stck_request.stck_status %>
+      <% when "Dimohon" %>
+        <span class="label label-warning"><h3><%= @stck_request.stck_status %> <%= @stck_request.tg_mohon %></h3></span>
+      <% when "Dibatalkan" %>
+        <span class="label label-important"><h3><%= @stck_request.stck_status %> <%= @stck_request.tg_pembatalan %></h3></span>
+      <% when "Disetujui" %>
+        <span class="label label-info"><h3><%= @stck_request.stck_status %> <%= @stck_request.tg_persetujuan %></h3></span>
+      <% when "Didaftarkan" %>
+        <span class="label label-success"><h3><%= @stck_request.stck_status %> <%= @stck_request.tg_daftar %></h3></span>
+      <% when "Dicetak" %>
+        <span class="label label-success"><h3><%= @stck_request.stck_status %> <%= @stck_request.tg_cetak %></h3></span>
+      <% else %>
+        <span class="label label-warning"><h3>Permohonan baru</h3></span>
+      <% end %>
+    <% end %>
+<div>
+

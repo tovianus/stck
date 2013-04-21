@@ -1,4 +1,5 @@
-<% provide(:title, @perusahaan.nama_badan) %>
+<% provide(:title, "#{@perusahaan.nama_badan}") %>
+<%= render "shared/page_title" %>
 <p>
   <b>Nama penanggung:</b>
   <%= @perusahaan.nama_penanggung %>
@@ -29,6 +30,7 @@
   <%= @perusahaan.kdperusahaan %>
 </p>
 
-
-<%= link_to 'Edit', edit_perusahaan_path(@perusahaan), :class=>"btn" %> |
-<%= link_to 'Back', perusahaans_path, :class=>"btn" %>
+<div class="form-actions">
+<%= link_to 'Rubah', edit_perusahaan_path(@perusahaan), :class=>"btn" %> |
+<%= link_to 'Batal', perusahaans_path, :class=>"btn" %>
+</div>

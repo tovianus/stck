@@ -1,18 +1,5 @@
 <div class="page-header row-fluid span12">
-<h1>
-  <% case @stck_request.stck_status %>
-  <% when "Dimohon" %>
-    <span class="label label-warning"><h2><%= @stck_request.stck_status %> <%= @stck_request.tg_mohon %></h2></span>
-  <% when "Dibatalkan" %>
-    <span class="label label-important"><%= @stck_request.stck_status %> <%= @stck_request.tg_pembatalan %> </span>
-  <% when "Disetujui" %>
-    <span class="label label-info"><%= @stck_request.stck_status %> <%= @stck_request.tg_persetujuan %> </span>
-  <% when "Didaftarkan" %>
-    <span class="label label-success"><%= @stck_request.stck_status %> <%= @stck_request.tg_daftar %> </span>
-  <% when "Dicetak" %>
-    <span class="label label-success"><%= @stck_request.stck_status %> <%= @stck_request.tg_cetak %> </span>
-  <% end %>
-</h1>
+
 <div>
   <%= render 'form' %>
 </div>

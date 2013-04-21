@@ -1,35 +1,57 @@
 <% frmclass="form-horizontal" %>
-<% frmdivclass="control-group" %>
+<% frmdivclass="controls control-rows span12" %>
 <% frmlabelclass="control-label" %>
-<% frminputclass="controls" %>
+<% frminputclass="controls control-rows" %>
+
+<%= render "shared/error_messages", :target=>@stck_request %>
 <%= form_for(@stck_request, :html => { :class => "#{frmclass}" }) do |f| %>
   <div class="<%=frmdivclass%>">
     <label class="<%=frmlabelclass%>">Kepentingan: </label>
-      <div class="<%=frmdivclass %>"><%= f.text_area :kepentingan,:rows => "3" %></div>
-    <label class="<%=frmlabelclass%>">Merek/Jenis:</label>
-      <div class="<%=frmdivclass %>"><%= f.text_field :merk %> / <%= f.text_field :jenis %></div>
+      <%= f.text_area :kepentingan,:class=>"span5",:rows => "3"%>
+  </div>
+  <div class="<%=frmdivclass%>">
+    <label class="<%=frmlabelclass%>">Merek:</label><%= f.text_field :merk%>
+  </div>
+  <div class="<%=frmdivclass%>">
+    <label class="<%=frmlabelclass%>">Jenis:</label><%= f.text_field :jenis%>
+  </div>
+  <div class="<%=frmdivclass%>">
     <label class="<%=frmlabelclass%>">Model: </label>
-      <div class="<%=frmdivclass %>"><%= f.text_field :model %></div>
-    <label class="<%=frmlabelclass%>">Nomor rangka/mesin: </label>
-      <div class="<%=frmdivclass %>"><%= f.text_field :no_rangka %> / <%= f.text_field :no_mesin %></div>
-    <label class="<%=frmlabelclass%>">Tahun buat/rakit: </label>
-      <div class="<%=frmdivclass %>"><%= f.number_field :thn_buat %> / <%= f.number_field :thn_rakit %></div>
-    <label class="<%=frmlabelclass%>">Jumlah CC: </label>
-      <div class="<%=frmdivclass %>"><%= f.number_field :jml_cc %></div>
-    <label class="<%=frmlabelclass%>">Warna: </label>
-      <div class="<%=frmdivclass %>"><%= f.text_field :warna %></div>
-    <label class="<%=frmlabelclass%>">Bbm: </label>
-      <div class="<%=frmdivclass %>"><%= f.text_field :bbm %></div>
-    <label class="<%=frmlabelclass%>">TNKB: </label>
-      <div class="<%=frmdivclass %>"><%= f.text_field :tnkb %></div>
-    <label class="<%=frmlabelclass%>">Jumlah roda: </label>
-      <div class="<%=frmdivclass %>"><%= f.number_field :jml_roda %></div>
-    <label class="<%=frmlabelclass%>">Kabupaten: </label>
-      <div class="<%=frmdivclass %>"><%= f.text_field(:kabupaten)%></div>
+      <%= f.text_field :model%>
+  </div>
+  <div class="<%=frmdivclass%>">
+    <label class="<%=frmlabelclass%>">Nomor rangka: </label>
+      <%= f.text_field :no_rangka%>
+  </div>
+  <div class="<%=frmdivclass%>">
+    <label class="<%=frmlabelclass%>">Nomor rangka: </label><%= f.text_field :no_mesin%>
+  </div>
+  <div class="<%=frmdivclass%>">
+    <label class="<%=frmlabelclass%>">Tahun buat: </label><%= f.number_field :thn_buat%>
+  </div>
+  <div class="<%=frmdivclass%>">
+    <label class="<%=frmlabelclass%>">Tahun rakit: </label><%= f.number_field :thn_rakit %>
+  </div>
+  <div class="<%=frmdivclass%>">
+    <label class="<%=frmlabelclass%>">Jumlah CC: </label><%= f.number_field :jml_cc %>
+  </div>
+  <div class="<%=frmdivclass%>">
+    <label class="<%=frmlabelclass%>">Warna: </label><%= f.text_field :warna %>
+  </div>
+  <div class="<%=frmdivclass%>">
+    <label class="<%=frmlabelclass%>">Bbm: </label><%= f.text_field :bbm%>
+  </div>
+  <div class="<%=frmdivclass%>">
+    <label class="<%=frmlabelclass%>">TNKB: </label><%= f.text_field :tnkb %>
+  </div>
+  <div class="<%=frmdivclass%>">
+    <label class="<%=frmlabelclass%>">Jumlah roda: </label><%= f.number_field :jml_roda %>
+  </div>
+  <div class="<%=frmdivclass%>">
+    <label class="<%=frmlabelclass%>">Kabupaten: </label><%= f.text_field(:kabupaten)%>
   </div>
   <div class="hidden">
-    <label class="<%=frmlabelclass%>">Perusahaan: </label>
-    <div class="<%=frmdivclass %>"><%= f.text_field :perusahaan_id %></div>
+    <%= f.text_field :perusahaan_id %>
     <%= f.label :tg_mohon %><br />
     <%= f.datetime_select :tg_mohon %>
     <%= f.label :user_id %><br />
@@ -37,7 +59,11 @@
     <%= f.label :perusahaan_id %><br />
     <%= f.number_field :perusahaan_id %>
   </div>
-  <div class="actions">
-    <%= f.submit, :class="btn btn-large" %>
+  <div class="form-actions">
+    <%= f.submit "Simpan" %>
+    <%= link_to 'Tampilkan', @perusahaan,:class=>"btn" %> |
+    <%= link_to 'Batal', perusahaans_path,:class=>"btn" %>
   </div>
 <% end %>
+
+

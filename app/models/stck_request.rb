@@ -36,6 +36,7 @@ class StckRequest < ActiveRecord::Base
   validates :user_id, :presence => true
   validates :perusahaan_id, :presence => true
   validates :merk, :presence => true
+  validates :jenis, :presence => true
   validates :model, :presence => true
   validates :no_rangka, :presence => true, :uniqueness => true
   validates :no_mesin, :presence => true

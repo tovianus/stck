@@ -1,31 +1,33 @@
-<div class="row-fluid span8 offset2">
-<%= form_for(@perusahaan) do |f| %>
-  <div class="field">
-    <%= f.label :nama_penanggung %><br />
-    <%= f.text_field :nama_penanggung %>
-  </div>
-  <div class="field">
-    <%= f.label :nama_badan %><br />
-    <%= f.text_field :nama_badan %>
-  </div>
-  <div class="field">
-    <%= f.label :alamat_badan %><br />
-    <%= f.text_field :alamat_badan %>
-  </div>
-  <div class="field">
-    <%= f.label :telepon %><br />
-    <%= f.text_field :telepon %>
-  </div>
-  <div class="field">
-    <%= f.label :nama_kontak %><br />
-    <%= f.text_field :nama_kontak %>
-  </div>
-  <div class="field">
-    <%= f.label :kdperusahaan %><br />
-    <%= f.text_field :kdperusahaan %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+<div class="row-fluid">
+  <%= form_for(@perusahaan) do |f| %>
+    <div class="field">
+      <%= f.label :nama_penanggung %><br />
+      <%= f.text_field :nama_penanggung %>
+    </div>
+    <div class="field">
+      <%= f.label :nama_badan %><br />
+      <%= f.text_field :nama_badan %>
+    </div>
+    <div class="field">
+      <%= f.label :alamat_badan %><br />
+      <%= f.text_field :alamat_badan %>
+    </div>
+    <div class="field">
+      <%= f.label :telepon %><br />
+      <%= f.text_field :telepon %>
+    </div>
+    <div class="field">
+      <%= f.label :nama_kontak %><br />
+      <%= f.text_field :nama_kontak %>
+    </div>
+    <div class="field">
+      <%= f.label :kdperusahaan %><br />
+      <%= f.text_field :kdperusahaan %>
+    </div>
+    <div class="form-actions">
+      <%= f.submit %>
+      <% unless @perusahaan.new_record? %><%= link_to 'Tampilkan', @perusahaan,:class=>"btn" %> |<%end%>
+      <%= link_to 'Batal', perusahaans_path,:class=>"btn" %>
+    </div>
+  <% end %>
 </div>

@@ -1,17 +1,5 @@
-<p>
-  <% case @stck_request.stck_status %>
-  <% when "Dimohon" %>
-    <span class="label label-warning"><%= @stck_request.stck_status %> <%= @stck_request.tg_mohon %></span>
-  <% when "Dibatalkan" %>
-    <span class="label label-important"><%= @stck_request.stck_status %> <%= @stck_request.tg_pembatalan %> </span>
-  <% when "Disetujui" %>
-    <span class="label label-info"><%= @stck_request.stck_status %> <%= @stck_request.tg_persetujuan %> </span>
-  <% when "Didaftarkan" %>
-    <span class="label label-success"><%= @stck_request.stck_status %> <%= @stck_request.tg_daftar %> </span>
-  <% when "Dicetak" %>
-    <span class="label label-success"><%= @stck_request.stck_status %> <%= @stck_request.tg_cetak %> </span>
-  <% end %>
-</p>
+<%= render "pgtitle" %>
+<%= render "shared/error_messages", :target => @stck_request %>
 <p>
   <b>User:</b>
   <%= @stck_request.user.email %>
@@ -126,17 +114,18 @@
   <b>Kabupaten:</b>
   <%= @stck_request.kabupaten %>
 </p>
-
-<% unless current_user.roles.to_s.include?"admin"%>
-  <% if @stck_request.tg_persetujuan==nil && @stck_request.tg_pembatalan==nil %>
-    <%= link_to 'Edit', edit_stck_request_path(@stck_request),:class=>"btn" %> 
-  <% end %>
-  <% if @stck_request.tg_persetujuan==nil %>
-    <% if @stck_request.stck_status=="DIBATALKAN"%>
-      <%= link_to 'Aktifkan', @stck_request, method: :delete, data: { confirm: 'Aktifkan ?' },:class => "btn" %> 
-    <% elsif  @stck_request.stck_status=="DIMOHON" %>
-      <%= link_to 'Batalkan', @stck_request, method: :delete, data: { confirm: 'Batalkan ?' },:class => "btn" %> 
+<div class="form-actions">
+  <% unless current_user.roles.to_s.include?"admin" %>
+    <% if @stck_request.tg_persetujuan==nil && @stck_request.tg_pembatalan==nil %>
+      <%= link_to 'Rubah', edit_stck_request_path(@stck_request),:class=>"btn" %> 
+    <% end %>
+    <% if @stck_request.tg_persetujuan.to_s=="" %>
+      <% if @stck_request.tg_pembatalan.nil? %>
+        <%= link_to 'Batalkan', @stck_request, method: :delete, data: { confirm: 'Batalkan ?' },:class=>"btn" %> 
+      <% else %>
+        <%= link_to 'Aktifkan', @stck_request, method: :delete, data: { confirm: 'Aktifkan ?' },:class=>"btn" %> 
+      <% end %>
     <% end %>
   <% end %>
-<%end%>
-<%= link_to 'Back', stck_requests_path,:class=>"btn" %>
+  <%= link_to 'Kembali', stck_requests_path,:class=>"btn" %>
+</div>
