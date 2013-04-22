@@ -1,4 +1,0 @@
-  <div class="page-header span12">
-    <h1><%= yield(:title) %></h2>
-  </div>
-
