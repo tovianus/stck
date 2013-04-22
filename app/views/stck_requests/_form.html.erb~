@@ -3,6 +3,7 @@
 <% frmlabelclass="control-label" %>
 <% frminputclass="controls control-rows" %>
 
+<%= render "shared/error_messages", :target=>@stck_request %>
 <%= form_for(@stck_request, :html => { :class => "#{frmclass}" }) do |f| %>
   <div class="<%=frmdivclass%>">
     <label class="<%=frmlabelclass%>">Kepentingan: </label>

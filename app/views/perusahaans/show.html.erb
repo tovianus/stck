@@ -1,36 +1,41 @@
 <% provide(:title, "#{@perusahaan.nama_badan}") %>
 <%= render "shared/page_title" %>
-<p>
-  <b>Nama penanggung:</b>
-  <%= @perusahaan.nama_penanggung %>
-</p>
+<div class="span12">
+  <div class="span8 offset2">
+    <p>
+      <b>Nama penanggung:</b>
+      <%= @perusahaan.nama_penanggung %>
+    </p>
 
-<p>
-  <b>Nama badan:</b>
-  <%= @perusahaan.nama_badan %>
-</p>
+    <p>
+      <b>Nama badan:</b>
+      <%= @perusahaan.nama_badan %>
+    </p>
 
-<p>
-  <b>Alamat badan:</b>
-  <%= @perusahaan.alamat_badan %>
-</p>
+    <p>
+      <b>Alamat badan:</b>
+      <%= @perusahaan.alamat_badan %>
+    </p>
 
-<p>
-  <b>Telepon:</b>
-  <%= @perusahaan.telepon %>
-</p>
+    <p>
+      <b>Telepon:</b>
+      <%= @perusahaan.telepon %>
+    </p>
 
-<p>
-  <b>Nama kontak:</b>
-  <%= @perusahaan.nama_kontak %>
-</p>
+    <p>
+      <b>Nama kontak:</b>
+      <%= @perusahaan.nama_kontak %>
+    </p>
 
-<p>
-  <b>Kdperusahaan:</b>
-  <%= @perusahaan.kdperusahaan %>
-</p>
+    <p>
+      <b>Kdperusahaan:</b>
+      <%= @perusahaan.kdperusahaan %>
+    </p>
 
-<div class="form-actions">
-<%= link_to 'Rubah', edit_perusahaan_path(@perusahaan), :class=>"btn" %> |
-<%= link_to 'Batal', perusahaans_path, :class=>"btn" %>
+    <div class="form-actions">
+    <%= link_to 'Rubah', edit_perusahaan_path(@perusahaan), :class=>"btn" %> |
+    <%= link_to 'Batal', perusahaans_path, :class=>"btn" %>
+    </div>
+  </div>
 </div>
+

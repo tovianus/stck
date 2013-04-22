@@ -54,7 +54,7 @@ class StckRequest < ActiveRecord::Base
   validates :jml_cc, :presence => true
   validates :warna, :presence => true
   validates :bbm, :presence => true
-#  validates :tnkb, :presence => true
+  validates :tnkb, :presence => true
   validates :jml_roda, :presence => true
   validates :tg_mohon, :presence => true
   validates :kabupaten, :presence => true

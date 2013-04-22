@@ -8,9 +8,27 @@ authorization
 - integrate to all menu
 
 user management
-- index user
 - user can change password, can not change email
 - admin can change user detail 
 
-Dashboard
+  
+- jml permohonan
+  - colour label yellow if zero, green if not zero
 
+- edit Form
+  - can not ban my self and if not admin
+  - role inline
+  - uppon success, back to index
+
+Login form
+  - fix layout
+
+perusahaan
+
+Dashboard
+- equalize label size
+
+Stck request
+- Form
+  - selection merk
+  - 

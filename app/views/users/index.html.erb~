@@ -43,7 +43,7 @@ TODO
           </td>
           <td>
               <% if user.stck_requests.count==0 %>
-                <span class="label-warning"><%= user.stck_requests.count %></span>
+                <span class="label-success"><%= user.stck_requests.count %></span>
               <% else %>
                 <span class="label-success"> <%= user.stck_requests.count %> </span>
               <% end %>

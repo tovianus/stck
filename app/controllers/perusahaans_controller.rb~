@@ -76,7 +76,7 @@ class PerusahaansController < ApplicationController
   def destroy
     @perusahaan = Perusahaan.find(params[:id])
 
-    if @perusahaan.stck_requests.count==0 && @perusahaan.users.count==0
+    if @perusahaan.stck_requests.count==0 AND @perusahaan.users.count==0
       @perusahaan.destroy
     else
       raise "Masih ada user yang di link ke perusahaan ini" if @perusahaan.users.count!=0

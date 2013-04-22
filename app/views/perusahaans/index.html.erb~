@@ -39,7 +39,7 @@
             <td>
               <%= link_to 'Tampilkan', perusahaan,:class=>"btn btn-small" %>
               <%= link_to 'Rubah', edit_perusahaan_path(perusahaan),:class=>"btn btn-small" %>
-              <% if perusahaan.ttl_request==0 && perusahaan.users.count==0 %>
+              <% if perusahaan.ttl_request==0 %>
                 <%= link_to 'Hapus', perusahaan, method: :delete, data: { confirm: "Hapus data #{perusahaan.nama_badan}?" },:class=>"btn btn-small" %></td>
               <%end%>
           </tr>

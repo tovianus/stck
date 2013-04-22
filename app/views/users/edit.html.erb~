@@ -1,4 +1,4 @@
-<% provide(:title, "Menambah pengguna") %>
+<% provide(:title, "Edit #{@user.email}" ) %>
 <%= render "shared/page_title" %>
 <%= render "shared/error_messages", :target => @user %>
 <%= render 'form' %>
