@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 Stck::Application.configure do
+=======
+RailsApp::Application.configure do
+>>>>>>> ee5bd40868cd70e8c7e1a08ae51c161ebc640b8c
   # Settings specified here will take precedence over those in config/application.rb
 
   # The test environment is used exclusively to run your application's

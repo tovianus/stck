@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 Stck::Application.configure do
+=======
+RailsApp::Application.configure do
+>>>>>>> ee5bd40868cd70e8c7e1a08ae51c161ebc640b8c
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
@@ -34,8 +38,11 @@ Stck::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+<<<<<<< HEAD
 
 #### Devise
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
+=======
+>>>>>>> ee5bd40868cd70e8c7e1a08ae51c161ebc640b8c
 end

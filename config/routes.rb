@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Stck::Application.routes.draw do
   get "user/index"
 
@@ -24,6 +25,9 @@ Stck::Application.routes.draw do
   match '/dashboard', to: 'static_pages#dashboard'
 
 
+=======
+RailsApp::Application.routes.draw do
+>>>>>>> ee5bd40868cd70e8c7e1a08ae51c161ebc640b8c
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

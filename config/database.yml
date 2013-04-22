@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # SQLite version 3.x
 #   gem install sqlite3
 #
@@ -15,11 +16,35 @@ development:
 test:
   adapter: sqlite3
   database: db/test.sqlite3
+=======
+test:
+  adapter: sqlite3
+  database: db/test.sqlite3
+  pool: 5
+  timeout: 5000
+
+development:
+  adapter: sqlite3
+  database: db/development.sqlite3
+>>>>>>> ee5bd40868cd70e8c7e1a08ae51c161ebc640b8c
   pool: 5
   timeout: 5000
 
 production:
+<<<<<<< HEAD
   adapter: sqlite3
   database: db/production.sqlite3
   pool: 5
   timeout: 5000
+=======
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  pool: 5
+  database: <%=ENV['OPENSHIFT_APP_NAME']%>
+  username: <%=ENV['OPENSHIFT_MYSQL_DB_USERNAME']%>
+  password: <%=ENV['OPENSHIFT_MYSQL_DB_PASSWORD']%>
+  # socket:   <%=ENV['OPENSHIFT_MYSQL_DB_SOCKET']%>
+  host:     <%=ENV['OPENSHIFT_MYSQL_DB_HOST']%>
+  port:     <%=ENV['OPENSHIFT_MYSQL_DB_PORT']%>
+>>>>>>> ee5bd40868cd70e8c7e1a08ae51c161ebc640b8c

@@ -13,7 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+<<<<<<< HEAD
 // Loads all Bootstrap javascripts
 //= require bootstrap
 
 
+=======
+>>>>>>> ee5bd40868cd70e8c7e1a08ae51c161ebc640b8c

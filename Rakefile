@@ -4,4 +4,8 @@
 
 require File.expand_path('../config/application', __FILE__)
 
+<<<<<<< HEAD
 Stck::Application.load_tasks
+=======
+RailsApp::Application.load_tasks
+>>>>>>> ee5bd40868cd70e8c7e1a08ae51c161ebc640b8c
