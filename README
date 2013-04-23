@@ -11,7 +11,7 @@ user management
 - user can change password, can not change email
 - admin can change user detail 
 
-  
+stck_request index  
 - jml permohonan
   - colour label yellow if zero, green if not zero
 
