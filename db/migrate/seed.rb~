@@ -7,7 +7,9 @@ Perusahaan.create(:nama_penanggung=>"TEST DEALER02",:nama_badan => "TEST DEALER 
   User.create!(:email => 'sudarsana@gmail.com', :password => '030201064', :password_confirmation => '030201064', :perusahaan_id=>1,:roles=>[ 'admin' ] ) if t==2
   User.create(:email => "testing0#{t}@gmail.com", :password => "testing0#{t}", :password_confirmation => "testing0#{t}", :perusahaan_id=>3,:roles=>[ 'dealer' ]) if t==3
   User.create(:email => "testing0#{t}@gmail.com", :password => "testing0#{t}", :password_confirmation => "testing0#{t}", :perusahaan_id=>4,:roles=>[ 'dealer' ]) if t==4
+p=perusahaan.
   (1..10).each do |u|
+    u=User.find(t)
     StckRequest.create(merk: "merk test#{u}",jenis:"jenis test#{u}", model: "test#{u}",
       thn_buat: "2013", thn_rakit: "2013", jml_cc: "1000", warna: "test warna #{u}", bbm: "Bensin",
       no_rangka: "#{t} rangka test#{u}", no_mesin: "#{t} mesin test#{u}",kabupaten: "kabupaten test#{u}", user_id: t) if t>2

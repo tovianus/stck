@@ -11,7 +11,7 @@ class StckRequest < ActiveRecord::Base
   belongs_to :perusahaan
 
 #Before
-  before_validation :fill_perusahaan
+  before_validation :fill_default
   
 #Scope
 
@@ -28,9 +28,11 @@ class StckRequest < ActiveRecord::Base
 #Order
   default_scope order("updated_at desc")
 
-  def fill_perusahaan
+  def fill_default
+    tg_mohon=DateTime.now if tg_mohon.nil?
     if perusahaan_id.to_s==""
-      perusahaan_id=current_user.perusahaan.id
+      u=User.find(user_id)
+      perusahaan_id=u.perusahaan_id
     end
   end
 
