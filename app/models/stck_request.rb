@@ -26,7 +26,7 @@ class StckRequest < ActiveRecord::Base
   scope :forthismonth, where(:updated_at => Date.today.beginning_of_month.beginning_of_day..Date.today.end_of_day)
   scope :forthisyear, where(:updated_at => Date.today.beginning_of_year.beginning_of_day..Date.today.end_of_day)
 #Order
-  default_scope order("updated_at desc")
+  default_scope order("stck_requests.updated_at desc")
 
   def fill_default
     tg_mohon=DateTime.now if tg_mohon.nil?
@@ -38,9 +38,9 @@ class StckRequest < ActiveRecord::Base
 
   def self.byuser(current_user)
     if current_user.roles.to_s.include?"admin"
-        self.where("user_id not null")
+        self.where("stck_requests.user_id not null")
     else
-        self.where("user_id=?",current_user.id)
+        self.where("stck_requests.user_id=?",current_user.id)
     end
   end
 #Validation
@@ -84,10 +84,9 @@ class StckRequest < ActiveRecord::Base
         where('tg_cetak is not null')
       elsif search.upcase.include?"@"
         #Search by pemohon, Only for admin
-        if current_user.to_s.roles.include?"ADMIN"
-          user=User.where('email LIKE ?',"%#{search}%").first
-          where('user_id=?',user.id)
-        end
+        #if current_user.role.is?"ADMIN"
+        #  includes(:user).where("users.email LIKE ?",'%#{search}%')
+        #end
       else
         where('no_rangka LIKE ? OR no_mesin LIKE ? or merk LIKE ? OR jenis LIKE ? OR model LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
       end
