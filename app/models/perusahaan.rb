@@ -13,5 +13,11 @@ class Perusahaan < ActiveRecord::Base
     self.stck_requests.count
   end
 
-
+  def self.search(search)
+    if search
+      where("nama_badan LIKE ? OR kdperusahaan LIKE ? OR nama_penanggung LIKE ? OR nama_kontak LIKE ?", "%#{search}%","%#{search}%","%#{search}%","%#{search}%")
+    else
+      scoped
+    end
+  end
 end

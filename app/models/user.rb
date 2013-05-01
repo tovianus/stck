@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
 
   ROLES = %w[admin approving registering printing dealer banned]
 
+  validates :password, :presence => true
+  validates :email, :presence => true, :uniqueness => true
   validates :perusahaan_id, :presence => true
   validates :roles_mask, :presence => true
 

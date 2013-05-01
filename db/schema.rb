@@ -52,7 +52,6 @@ ActiveRecord::Schema.define(:version => 20130419193338) do
     t.integer  "idranmor"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
-    t.datetime "tg_batal"
   end
 
   create_table "users", :force => true do |t|

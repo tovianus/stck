@@ -2,31 +2,30 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    @user = user || User.new # for guest
+    user = user || User.new # for guest
     #admin approving registering printing dealer banned
-    @user.roles.each { |role| send(role) }
-
-    if user.is? :admin
-      can :manage, Perusahaan
-      can :manage, User 
-      can :read, :all
-    end
-    if user.is? :approving
-      cannot :update, StckRequest, :tg_batal != nil
-      can :read, :update, StckRequest, :tg_persetujuan => nil
-    end
-    if user.is? :registering
-      cannot :update, StckRequest, :tg_batal != nil
-      can :read, :update, StckRequest, :tg_persetujuan!=nil
-    end
-    if user.is? :printing
-      cannot :update, StckRequest, :tg_batal != nil
-      can :read, :update, StckRequest, :tg_daftar!=nil
-    end
-    if user.is? :dealer
-      can :manage, StckRequest, :user_id=user.id, :tg_persetujuan => nil
-      can :update, User, :user_id=user.id
-    end
+#    user.roles.each { |role| send(role) }
+      if user.roles.include?"admin"
+        can :manage, Perusahaan
+        can :manage, User 
+        can :read, :all
+      end
+      if user.roles.include?"approving"
+        cannot :update, StckRequest, :tg_batal != nil
+        can :read, :update, StckRequest, :tg_persetujuan => nil
+      end
+      if user.roles.include?"registering"
+        cannot :update, StckRequest, :tg_batal != nil
+        can :read, :update, StckRequest, :tg_persetujuan!=nil
+      end
+      if user.roles.include?"printing"
+        cannot :update, StckRequest, :tg_batal != nil
+        can :read, :update, StckRequest, :tg_daftar!=nil
+      end
+      if user.roles.include?"dealer"
+        can :manage, StckRequest, :user_id=>user.id, :tg_persetujuan => nil
+        can :update, User, :user_id=>user.id
+      end
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)

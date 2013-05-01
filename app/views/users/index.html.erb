@@ -1,23 +1,15 @@
 <!--- 
 TODO
-1. filter only for admin
 --->
 <% provide(:title, "Daftar pengguna aplikasi STCK") %>
-<div class="row-fluid"  >
-  <div id="pgtitle" class="page-header span12"  >
-    <h1>
-      <%= yield(:title) %> 
-    </h1>
-  <div id="pgnav" class="row-fluid pull-left span12 style="border:2px solid">
-    <div class="span8">
-      <%= link_to 'Tambah pemohon', new_user_path,:class => "btn btn-large btn-primary"  if current_user.is?"admin"%>
-    </div>
-    <div id="pgsearch" class="span4 pull-right">
-      <%= render :partial => 'users/filters' %>
+<div class="row-fluid  span12"  >
+  <div id="pgnav" class="navbar row-fluid pull-left container">
+    <div class="navbar-inner">
+      <%= link_to 'Tambah pemohon', new_user_path,:class => "btn btn-primary"  if current_user.is?"admin"%>
+      <%= render :partial => 'filters' %>
     </div>
   </div>
-  <div class="row-fluid span12">
-  <%= will_paginate @users %>
+  <div id="list" class="container">
     <table class="table">
       <thead>
         <tr>
@@ -43,9 +35,9 @@ TODO
           </td>
           <td>
               <% if user.stck_requests.count==0 %>
-                <span class="label-warning"><%= user.stck_requests.count %></span>
+                <span class="badge badge-warning"><%= user.stck_requests.count %></span>
               <% else %>
-                <span class="label-success"> <%= user.stck_requests.count %> </span>
+                <span class="badge badge-success"> <%= user.stck_requests.count %> </span>
               <% end %>
           </td>
 <!--- Menu --->

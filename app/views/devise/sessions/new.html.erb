@@ -1,8 +1,7 @@
-<h2>Sign in</h2>
-
 <div class="container-fluid">
-  <div class="span6 offset2">
-  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+  <div align=center><h2 style="align:center">Sign in</h2></div>
+  <div class="span4 offset4 hero-unit">
+    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
     <div><%= f.label :email %><br />
     <%= f.email_field :email, :autofocus => true %></div>
 
@@ -15,7 +14,5 @@
 
     <div><%= f.submit "Sign in" %></div>
   <% end %>
-
-  <%= render "devise/shared/links" %>
   </div>
 </div>

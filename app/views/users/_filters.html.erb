@@ -1,6 +1,6 @@
 <!--- Filters --->
-<%= form_tag users_path, :method => 'get' do %>
-    <%= text_field_tag :search, params[:search] %>
+<%= form_tag users_path, :method => 'get', :class=>"navbar-form pull-right form-search" do %>
+    <%= text_field_tag :search, params[:search],:class=>"search-query" %>
     <%= submit_tag "Search", :name => nil %>
 <% end %>
 <!--- End of form --->

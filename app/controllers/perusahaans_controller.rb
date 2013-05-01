@@ -1,10 +1,11 @@
 class PerusahaansController < ApplicationController
-  skip_authorization_check
+#  skip_authorization_check
+  load_and_authorize_resource
 
   # GET /perusahaans
   # GET /perusahaans.json
   def index
-    @perusahaans = Perusahaan.paginate(:per_page => 20, :page => params[:page])
+    @perusahaans = Perusahaan.search(params[:search]).paginate(:per_page => 10, :page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

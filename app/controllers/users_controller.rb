@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
-skip_authorization_check
+#skip_authorization_check
+  load_and_authorize_resource
   def index
-    @users = User.search(params[:search]).paginate(:per_page => 20, :page => params[:page])    
+    @users = User.search(params[:search]).paginate(:per_page => 10, :page => params[:page])    
   end
 
   def show

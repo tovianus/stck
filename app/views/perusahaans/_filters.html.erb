@@ -1,6 +1,5 @@
 <!--- Filters --->
-<%= form_tag stck_requests_path, :method => 'get', :class=>"navbar-form pull-right form-search" do %>
-    <span class="help-inline">Cari nomor rangka/nomor mesin</span>
+<%= form_tag perusahaans_path, :method => 'get', :class=>"navbar-form pull-right form-search" do %>
     <%= text_field_tag :search, params[:search],:class=>"search-query" %>
     <%= submit_tag "Search", :name => nil %>
 <% end %>

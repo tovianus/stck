@@ -7,7 +7,7 @@ skip_authorization_check
   # GET /stck_requests.json
   def index
 #    @stck_requests = StckRequest.byuser(current_user)
-    @stck_requests = StckRequest.search(params[:search]).byuser(current_user).paginate(:per_page => 20, :page => params[:page])
+    @stck_requests = StckRequest.search(params[:search]).byuser(current_user).paginate(:per_page => 10, :page => params[:page])
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @stck_requests }
