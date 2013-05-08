@@ -1,6 +1,7 @@
 class StaticPagesController < ApplicationController
+#  skip_authorization_check
+#  load_and_authorize_resource
   skip_authorization_check
-  #load_and_authorize_resource
   def home
 
   end
@@ -11,7 +12,9 @@ class StaticPagesController < ApplicationController
   def contact
   end
   def dashboard
-    
+    if current_user.roles.include?"banned"
+      redirect_to root_url, :flash => { :error => 'User di blok. Hubungi administrator' }
+    end
 #TODO: set title
     #Ytd stat
     @pending_ytd    =StckRequest.pending.forthisyear.byuser(current_user).count

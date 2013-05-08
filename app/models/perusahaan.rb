@@ -4,10 +4,15 @@ class Perusahaan < ActiveRecord::Base
   has_many :users
   has_many :stck_requests
 
-  validates :nama_penanggung, :presence => true
-  validates :nama_badan, :presence => true, :uniqueness => {case_sensitive: false}
-  validates :alamat_badan, :presence => true
-  validates :kdperusahaan, :presence => true, :uniqueness => {case_sensitive: false}
+  validates_presence_of :nama_penanggung, :message => "Nama penanggung harus berisi"
+  validates_uniqueness_of :nama_penanggung,:case_sensitive => false, :message => "Nama penanggung sudah ada yang memakai"
+  validates_presence_of :nama_badan, :case_sensitive => false, :message => "Nama badan harus diisi"
+#  validates_uniqueness_of :nama_badan, :uniqueness => {case_sensitive: false},:message => "Nama badan sudah dipakai"
+  validates_uniqueness_of :nama_badan,:message => "Nama badan sudah dipakai"
+  validates_presence_of :alamat_badan,:message => "Alamat badan harus diisi"
+  validates_presence_of :kdperusahaan,:message => "Kode perusahaan harus diisi"
+  validates_uniqueness_of :kdperusahaan,:case_sensitive => false,:message => "Kode perusahaan sudah dipakai"
+#  validates_uniqueness_of :kdperusahaan,:uniqueness => {case_sensitive: false},:message => "Kode perusahaan harus diisi"
 
   def ttl_request
     self.stck_requests.count

@@ -44,22 +44,23 @@ class StckRequest < ActiveRecord::Base
     end
   end
 #Validation
-  validates :user_id, :presence => true
-  validates :perusahaan_id, :presence => true
-  validates :merk, :presence => true
-  validates :jenis, :presence => true
-  validates :model, :presence => true
-  validates :no_rangka, :presence => true, :uniqueness => true
-  validates :no_mesin, :presence => true
-  validates :thn_buat, :presence => true
-  validates :thn_rakit, :presence => true
-  validates :jml_cc, :presence => true
-  validates :warna, :presence => true
-  validates :bbm, :presence => true
-#  validates :tnkb, :presence => true
-  validates :jml_roda, :presence => true
-  validates :tg_mohon, :presence => true
-  validates :kabupaten, :presence => true
+  validates_presence_of :user_id
+  validates_presence_of :perusahaan_id, :message => "Perusahaan: harus memilih salah satu Perusahaan "
+  validates_presence_of :merk,:message => "Merk: harus diisi"
+  validates_presence_of :jenis,:message => "Jenis: harus diisi"
+  validates_presence_of :model,:message => "Model: harus diisi"
+  validates_presence_of :no_rangka, :message => "Nomor rangka: harus diisi"
+  validates_uniqueness_of :no_rangka, :message => "Nomor rangka: sudah ada yang memakai"
+  validates_presence_of :no_mesin, :message => "Nomor mesin: harus diisi"
+  validates_presence_of :thn_buat, :message => "Tahun buat harus diisi"
+  validates_presence_of :thn_rakit, :message => "Tahun rakit harus diisi"
+  validates_presence_of :jml_cc, :message => "Jumlah cc: harus diisi"
+  validates_presence_of :warna, :message => "Warna: harus diisi"
+  validates_presence_of :bbm, :message => "BBM: harus diisi"
+#  validates_presence_of :tnkb
+  validates_presence_of :jml_roda, :message => "Jumlah roda: harus diisi"
+  validates_presence_of :tg_mohon
+  validates_presence_of :kabupaten, :message => "Kabupaten harus diisi"
   
   def stck_status
     status="Dimohon"      if self.tg_persetujuan.nil?

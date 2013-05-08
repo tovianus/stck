@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
 
     if @user.save
-      redirect_to users_path, :flash => { :success => 'User was successfully created.' }
+      redirect_to users_path, :flash => { :success => 'User berhasil di tambah.' }
     else
       render :action => 'new'
     end
@@ -37,9 +37,9 @@ class UsersController < ApplicationController
 
     if @user.update_attributes(params[:user])
       sign_in(@user, :bypass => true) if @user == current_user
-      redirect_to users_path, :flash => { :success => 'User was successfully updated.' }
+      redirect_to users_path, :flash => { :success => 'User berhasil di simpan.' }
     else
-      render :action => 'edit'
+      render :action => 'edit', :flash => { :error => @user.errors }
     end
   end
 
@@ -54,18 +54,6 @@ class UsersController < ApplicationController
     end
     @user.save
     redirect_to users_path, :flash => { :success => flashmsg }
-  end
-
-  def update_password
-    @user = User.find(current_user.id)
-#    if @user.update_attributes(params[:user])
-    if @user.update_with_password(params[:user])
-      # Sign in the user by passing validation in case his password changed
-      sign_in @user, :bypass => true
-      redirect_to root_path
-    else
-      render "edit"
-    end
   end
 
 end

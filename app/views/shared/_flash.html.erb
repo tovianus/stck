@@ -1,0 +1,13 @@
+<div id="flash">
+<%= logger.info "FLASH empty?: #{flash.nil?}" %>
+
+<% unless flash.nil? %>
+  <% flash.each do |key, value| %>
+    <div class="<%= flash_class(key) %> fade in">
+      <a href="#" data-dismiss="alert" class="close">×</a>
+      <%= value %>
+    </div>
+  <% end %>
+<%end%>
+</div>
+

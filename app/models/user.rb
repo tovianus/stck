@@ -15,10 +15,27 @@ class User < ActiveRecord::Base
 
   ROLES = %w[admin approving registering printing dealer banned]
 
-#  validates :password, :presence => true
-  validates :email, :presence => true, :uniqueness => true
-  validates :perusahaan_id, :presence => true
-  validates :roles_mask, :presence => true
+  validates_presence_of :email, :message => "Email harus diisi"
+  validates_uniqueness_of :email, :message => "Email sudah terdaftar"
+  validates_presence_of :perusahaan_id, :message => "Perusahaan harus diisi"
+  validates_presence_of :roles, :message => "Pilih hak sebagai petugas atau sebagai dealer"
+#  validate  roles_as_dealer
+#  validates :roles, :if => { :include => "dealer", :length { :is => 1 }, :message => "Pilih antara hak dealer ATAU hak sebagai petugas Kepolisian" }
+
+
+  def roles_as_dealer
+#DEALER
+    if roles.to_s=="" # Empty roles
+      self.errors.add(:roles, "Pilih antara hak dealer ATAU hak sebagai petugas Kepolisian")
+    end
+    if roles.include?"dealer" and roles.size!=1
+      self.errors.add(:roles, "Pilih antara hak dealer ATAU hak sebagai petugas Kepolisian")
+    end
+#THE REST
+#      if roles      
+#      errors.add "bila diberikan hak DEALER maka tidak diperbolehkan memiliki hak sebagai petugas Kepolisian"
+#    end
+  end
 
   def is?(role)
     roles.include?(role.to_s)
@@ -37,6 +54,7 @@ class User < ActiveRecord::Base
   def self.byperusahaan(search)
      includes(:perusahaan).where("perusahaans.nama_badan LIKE ? OR perusahaans.kdperusahaan LIKE ?","%#{search}%","%#{search}%")
   end
+
   def self.search(search)
     if search
       includes(:perusahaan).where("perusahaans.nama_badan LIKE ? OR perusahaans.kdperusahaan LIKE ? OR email LIKE ?", "%#{search}%","%#{search}%","%#{search}%")

@@ -4,6 +4,7 @@
 <% frminputclass="controls control-rows" %>
 
 <%= form_for(@stck_request, :html => { :class => "#{frmclass}" }) do |f| %>
+  <%= render "shared/error_messages", :object => f.object %>  
   <div class="<%=frmdivclass%>">
     <label class="<%=frmlabelclass%>">Kepentingan: </label>
       <%= f.text_area :kepentingan,:class=>"span5",:rows => "3"%>

@@ -1,6 +1,7 @@
 <div class="span12">
   <div class="span8 offset2">
     <%= form_for @user, :html => { :class=>"form-horizontal" }  do |f| %>
+    <%= render "shared/error_messages", :object => f.object %>    
 <!--- Admin only --->
       <% if current_user.is?"admin" %>
         <div class="control-group">
@@ -23,8 +24,8 @@
           <%= f.label "Role", :class=>"control-label" %>
           <div class="controls">
             <% for role in User::ROLES %>
+              <%= label_tag "user_roles_#{role}", role.humanize, :class=>"checkbox inline" %>: 
               <%= check_box_tag "user[roles][#{role}]", role, @user.roles.include?(role), {:name => "user[roles][]"}%>
-              <%= label_tag "user_roles_#{role}", role.humanize, :class=>"checkbox inline" %>
             <% end %>
           </div>
         </div>

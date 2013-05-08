@@ -2,7 +2,7 @@
 # - search by user for administrator
 
 class StckRequestsController < ApplicationController
-skip_authorization_check
+  load_and_authorize_resource
   # GET /stck_requests
   # GET /stck_requests.json
   def index

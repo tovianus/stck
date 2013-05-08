@@ -5,13 +5,14 @@ class ApplicationController < ActionController::Base
 
 #Routing error
 #  rescue_from ActionController::RoutingError, :with => :render_not_found
+# temp disabled
   rescue_from ActionController::RoutingError do |exception|
-    raise CanCan::AccessDenied
+    redirect_to dashboard_path, :alert => 'Halaman tidak tersedia' 
   end
  
   def routing_error
-#    raise ActionController::RoutingError.new(params[:path])
-    raise CanCan::AccessDenied
+    raise ActionController::RoutingError.new(params[:path])
+#    raise CanCan::AccessDenied
   end
    
   def render_not_found
@@ -33,7 +34,12 @@ class ApplicationController < ActionController::Base
 
 #Cancan forced exception
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_url, :alert => exception.message
+    if current_user.roles.include?"banned"
+    #TODO: Kill session
+    redirect_to root_url, :flash => { :error => 'User di blok, hubungi administrator' } 
+    else
+    redirect_to root_url, :flash => { :error => 'Anda tidak berhak mengakses halaman ini' } 
+    end
   end
 
 end

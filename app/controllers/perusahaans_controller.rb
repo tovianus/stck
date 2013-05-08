@@ -63,7 +63,7 @@ class PerusahaansController < ApplicationController
 
     respond_to do |format|
       if @perusahaan.update_attributes(params[:perusahaan])
-        format.html { redirect_to perusahaans_url, notice: 'Perusahaan was successfully updated.' }
+        format.html { redirect_to perusahaans_url, notice: 'Perubahan data perusahaan berhasil disimpan.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

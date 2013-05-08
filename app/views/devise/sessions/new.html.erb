@@ -1,18 +1,14 @@
-<div class="container-fluid">
-  <div align=center><h2 style="align:center">Sign in</h2></div>
-  <div class="span4 offset4 hero-unit">
+<div class="container-fluid" type="align:center">
+  <div align=center><h2>Sign in</h2>
+  <div class="span6 offset3">
     <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-    <div><%= f.label :email %><br />
-    <%= f.email_field :email, :autofocus => true %></div>
-
-    <div><%= f.label :password %><br />
-    <%= f.password_field :password %></div>
-
-    <% if devise_mapping.rememberable? -%>
-      <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-    <% end -%>
-
-    <div><%= f.submit "Sign in" %></div>
-  <% end %>
+      <%= f.label :email %><%= f.email_field :email, :autofocus => true %>
+      <%= f.label :password %><%= f.password_field :password %>
+      <% if devise_mapping.rememberable? -%>
+        <br><%= f.label :remember_me %> <%= f.check_box :remember_me %> 
+      <% end -%>
+      <div><%= f.submit "Sign in" %></div>
+    <% end %>
+  </div>
   </div>
 </div>

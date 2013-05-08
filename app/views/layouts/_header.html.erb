@@ -19,7 +19,7 @@
       <ul class="nav nav-tabs  pull-right">
         <% if user_signed_in? %>
         <li><%= link_to current_user.email,"#" %></li>
-        <li><%= link_to "Ganti Password", "edit_user_registration_path(current_user)" %></li>
+        <li><%= link_to "Ganti Password", "change_password" %></li>
         <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
         <% else %>
           <li><%= link_to('Login', new_user_session_path )  %></li>
@@ -33,8 +33,8 @@
     <%= image_tag("logo-ditlantas.jpg",  :class => "img-rounded") %>
   </div>
   <div class="span10" id="mytitlebar" >
-    <h2 class="text-center">Surat Tanda Cek Kendaraan</h1>
-    <h3 class="text-center"><%= yield(:title) %><%= request.path_parameters["controller"]%></h2>
+    <h2 class="text-center">Surat Tanda Cek Kendaraan</h2>
+    <h3 class="text-center"><%= yield(:title) %><%= request.path_parameters["controller"]%></h3>
   </div>
   <div id="mylogopolda" class="span1 pull-right">
     <%= image_tag("logo-polda-bali.jpg",  :class => "img-rounded") %>

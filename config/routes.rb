@@ -1,6 +1,9 @@
 Stck::Application.routes.draw do
 
 
+
+#  get "change_password/update_password"
+
   resources :stck_requests
   post "stck_requests/search"
   #map.search "search", :controller => "stck_request"
@@ -28,6 +31,9 @@ Stck::Application.routes.draw do
   match '/about',   to: 'static_pages#about'
   match '/contact', to: 'static_pages#contact'
   match '/dashboard', to: 'static_pages#dashboard'
+
+  match "/change_password" => "change_password#edit"
+  put "change_password/update_password"
 
 
   # The priority is based upon order of creation:
